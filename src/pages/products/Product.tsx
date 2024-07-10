@@ -3,7 +3,7 @@ import { TProducts } from "../../types/types";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const Product = (item: TProducts) => {
-  const { name, price, image } = item;
+  const { name, price, image, _id } = item;
   return (
     <div data-aos="zoom-in-up" className="mx-auto card w-96 shadow-md">
       <figure>
@@ -14,7 +14,7 @@ const Product = (item: TProducts) => {
         <p className="text-[#82908e] text-xl">${price}</p>
 
         <div className="card-actions   justify-end">
-          <Link to="/all-products">
+          <Link to={`/product-details/${_id}`}>
             <button className="btn bg-[#04211c] text-xl  text-white border-spacing-0">
               Details
               <MdOutlineKeyboardDoubleArrowRight />

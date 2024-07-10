@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
-import { useGetAllProductsQuery } from "../../redux/features/products/ProductsApi";
 import { TProducts } from "../../types/types";
 import Product from "./Product";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { useGetAllProductsQuery } from "../../redux/api/baseApi";
 
 const Products = () => {
   const { data, isLoading } = useGetAllProductsQuery(undefined);

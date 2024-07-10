@@ -1,9 +1,9 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useGetAllProductsQuery } from "../../redux/features/products/ProductsApi";
 import Loading from "../../components/Loading/Loading";
 import { TProducts } from "../../types/types";
+import { useGetAllProductsQuery } from "../../redux/api/baseApi";
 
 const Carousel = () => {
   const { data, isLoading } = useGetAllProductsQuery(undefined);
