@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
+import { useAppSelector } from "../../redux/hooks";
 
 const Navbar = () => {
+  // cart products
+  const cartProduct = useAppSelector((state) => state?.cart?.products);
+
   const navItem = (
     <>
       <li className="text-xl text-white  hover:text-[#0fb89c]">
@@ -61,6 +65,12 @@ const Navbar = () => {
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{navItem}</ul>
+        </div>
+        <div className="navbar-end">
+          <button className="btn btn-sm">
+            Cart
+            <div className="badge badge-secondary">+{cartProduct?.length}</div>
+          </button>
         </div>
       </div>
     </>

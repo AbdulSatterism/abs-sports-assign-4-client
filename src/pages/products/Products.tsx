@@ -3,10 +3,10 @@ import Loading from "../../components/Loading/Loading";
 import { TProducts } from "../../types/types";
 import Product from "./Product";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { useGetAllProductsQuery } from "../../redux/api/baseApi";
+import { useGetHomeProductsQuery } from "../../redux/api/baseApi";
 
 const Products = () => {
-  const { data, isLoading } = useGetAllProductsQuery(undefined);
+  const { data, isLoading } = useGetHomeProductsQuery(undefined);
 
   if (isLoading) {
     return <Loading />;
