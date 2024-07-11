@@ -12,10 +12,8 @@ const ProductDetails = () => {
   const product = data?.data;
   const dispatch = useAppDispatch();
   const cartProduct = useAppSelector((state) =>
-    state.cart.products.find((pd) => pd._id === product._id)
+    state.cart.products.find((pd) => pd?._id === product?._id)
   );
-
-  console.log(cartProduct);
 
   if (isLoading) {
     return <Loading></Loading>;

@@ -3,6 +3,10 @@ import App from "../App";
 import Home from "../pages/home/Home";
 import AllProducts from "../pages/products/AllProducts";
 import ProductDetails from "../pages/productDetails/ProductDetails";
+import CartDetails from "../pages/cart/CartDetails";
+import CheckOutPage from "../pages/cart/CheckOutPage";
+import DashboardLayout from "../layout/DashboardLayout";
+import AddProducts from "../pages/manageProducts/AddProducts";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +22,26 @@ const router = createBrowserRouter([
         element: <AllProducts />,
       },
       {
+        path: "/cart-details",
+        element: <CartDetails />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckOutPage />,
+      },
+      {
         path: "/product-details/:id",
         element: <ProductDetails />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/",
+        element: <AddProducts />,
       },
     ],
   },

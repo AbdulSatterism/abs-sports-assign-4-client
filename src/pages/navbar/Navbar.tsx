@@ -12,10 +12,10 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li className="text-xl text-white  hover:text-[#0fb89c]">
-        <Link to="/">All Products</Link>
+        <Link to="/all-products">All Products</Link>
       </li>
       <li className="text-xl text-white  hover:text-[#0fb89c]">
-        <Link to="/">Manage Product</Link>
+        <Link to="/dashboard">Manage Product</Link>
       </li>
       <li className="text-xl text-white  hover:text-[#0fb89c]">
         <Link to="/">Contact</Link>
@@ -67,10 +67,14 @@ const Navbar = () => {
           <ul className="px-1 menu menu-horizontal">{navItem}</ul>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-sm">
-            Cart
-            <div className="badge badge-secondary">+{cartProduct?.length}</div>
-          </button>
+          <Link to="/cart-details">
+            <button className="btn btn-sm">
+              Cart
+              <div className="badge badge-secondary">
+                +{cartProduct?.length}
+              </div>
+            </button>
+          </Link>
         </div>
       </div>
     </>
