@@ -1,4 +1,5 @@
 import { FaBars, FaHome } from "react-icons/fa";
+import { MdManageAccounts, MdSportsTennis } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
@@ -25,7 +26,14 @@ const DashboardLayout = () => {
           {/* Sidebar content here */}
 
           <li className="text-white">
-            <NavLink to="/dashboard/add-products"> Add Products</NavLink>
+            <NavLink to="/dashboard/add-products"> 
+            <MdSportsTennis />
+            Add Products</NavLink>
+          </li>
+          <li className="text-white">
+            <NavLink to="/dashboard/manage-products">
+            <MdManageAccounts/>
+             Manage Products</NavLink>
           </li>
 
           <div className="divider"></div>

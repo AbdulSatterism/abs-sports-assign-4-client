@@ -10,6 +10,7 @@ import {
 import { useGetHomeProductsQuery } from "../../redux/api/baseApi";
 import Loading from "../../components/Loading/Loading";
 import { Link } from "react-router-dom";
+import { IoBagCheckOutline } from "react-icons/io5";
 
 const CartDetails = () => {
   const cartProducts = useAppSelector((state) => state?.cart?.products);
@@ -121,7 +122,7 @@ const CartDetails = () => {
         <div className="card-actions   justify-start mt-4">
           <Link to="/checkout">
             <button className="btn bg-[#04211c] text-xl  text-white border-spacing-0">
-              Checkout
+              Checkout <IoBagCheckOutline />
             </button>
           </Link>
         </div>
