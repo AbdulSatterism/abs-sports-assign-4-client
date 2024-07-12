@@ -18,10 +18,10 @@ const Navbar = () => {
         <Link to="/dashboard">Manage Product</Link>
       </li>
       <li className="text-xl text-white  hover:text-[#0fb89c]">
-        <Link to="/">Contact</Link>
+        <Link to="/contact">Contact</Link>
       </li>
       <li className="text-xl text-white  hover:text-[#0fb89c]">
-        <Link to="/">About</Link>
+        <Link to="/about-us">About</Link>
       </li>
     </>
   );
@@ -30,7 +30,7 @@ const Navbar = () => {
     <>
       <div className="navbar bg-[#04211c]  max-w-screen-xl mx-auto print:hidden">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown ">
             <div
               tabIndex={0}
               role="button"
@@ -53,7 +53,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content  bg-[#04211c]  rounded-box w-52"
+              className="menu menu-sm dropdown-content  bg-[#04211c] z-10 rounded-box w-52"
             >
               {navItem}
             </ul>
@@ -63,7 +63,7 @@ const Navbar = () => {
             <h1>ABS Sports</h1>
           </div>
         </div>
-        <div className="hidden navbar-center lg:flex">
+        <div className="hidden navbar-center  lg:flex">
           <ul className="px-1 menu menu-horizontal">{navItem}</ul>
         </div>
         <div className="navbar-end">

@@ -1,4 +1,4 @@
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 
@@ -8,26 +8,29 @@ const Footer = () => {
       <footer className="footer justify-evenly p-12 bg-[#04211c] text-white">
         <nav>
           <h6 className="footer-title">ABS Sports Corner</h6>
-          <Link to="/" className="link link-hover">
+          <Link to="/about-us" className="link link-hover">
             About us
           </Link>
-          <Link to="/" className="link link-hover">
+          <Link to="/contact" className="link link-hover">
             Contact
           </Link>
-          <Link to="/" className="link link-hover">
+          <Link to="/contact" className="link link-hover">
             Jobs
           </Link>
         </nav>
         <nav>
           <h6 className="footer-title">ABS Sports Office</h6>
           <Link to="/" className="link link-hover">
-            About us
+            Home
           </Link>
-          <Link to="/" className="link link-hover">
-            Contact
+          <Link to="/all-products" className="link link-hover">
+            All Products
           </Link>
-          <Link to="/" className="link link-hover">
-            Jobs
+          <Link to="/dashboard/manage-products" className="link link-hover">
+            Manage Product
+          </Link>
+          <Link to="/cart-details" className="link link-hover">
+            Cart Details
           </Link>
         </nav>
       </footer>
@@ -50,6 +53,11 @@ const Footer = () => {
             <Link to="https://www.facebook.com/abdul.satter.1614">
               <svg width="32" viewBox="0 0 24 24" className="fill-current ">
                 <FaFacebook />{" "}
+              </svg>
+            </Link>
+            <Link to="www.linkedin.com/in/md-abdul-satter-ba10aa254">
+              <svg width="32" viewBox="0 0 24 24" className="fill-current ">
+                <FaLinkedin />{" "}
               </svg>
             </Link>
           </div>

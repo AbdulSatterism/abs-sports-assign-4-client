@@ -22,21 +22,23 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80  min-h-full text-xl">
+        <ul className="menu p-4 w-80 bg-[#04211c] opacity-50  min-h-full text-xl">
           {/* Sidebar content here */}
 
           <li className="text-white">
-            <NavLink to="/dashboard/add-products"> 
-            <MdSportsTennis />
-            Add Products</NavLink>
+            <NavLink to="/dashboard/add-products">
+              <MdSportsTennis />
+              Add Products
+            </NavLink>
           </li>
           <li className="text-white">
             <NavLink to="/dashboard/manage-products">
-            <MdManageAccounts/>
-             Manage Products</NavLink>
+              <MdManageAccounts />
+              Manage Products
+            </NavLink>
           </li>
 
-          <div className="divider"></div>
+          <div className="divider divider-neutral"></div>
 
           <li className="text-white">
             <NavLink to="/">

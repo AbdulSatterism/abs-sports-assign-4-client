@@ -6,21 +6,34 @@ import { removeCartProducts } from "../../redux/features/cartSlice";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { addUser } from "../../redux/features/userSlice";
 
 const CheckOutPage = () => {
   const cartProducts = useAppSelector((state) => state?.cart?.products);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
   const { register, handleSubmit } = useForm();
-
   const [paymentMethod, setPaymentMethod] = useState("cash");
 
+  const totalPrice = cartProducts.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const vat = totalPrice * 0.15;
+  const totalWithVat = totalPrice + vat;
+
   const onSubmit = (data: any) => {
-    console.log(data);
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      address: data.address,
+      phone: data.phone,
+      price: totalWithVat,
+    };
     if (paymentMethod === "cash") {
       cartProducts.forEach((item) => {
         dispatch(removeCartProducts(item._id));
+        dispatch(addUser(userInfo));
         // todo:dispatch yet!
       });
       Swal.fire({
@@ -34,9 +47,18 @@ const CheckOutPage = () => {
     }
   };
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-2xl font-semibold mb-4">Checkout</h2>
+    <div className="max-w-2xl mx-auto my-4 p-4 shadow-lg">
+      <h2 className="text-2xl font-semibold text-center mb-4">Checkout</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-4">
+          <label className="block mb-1">Total payable price</label>
+          <input
+            type="text"
+            defaultValue={totalWithVat}
+            {...register("price", { required: true })}
+            className="w-full p-2 border border-gray-300 rounded"
+          />
+        </div>
         <div className="mb-4">
           <label className="block mb-1">Name</label>
           <input

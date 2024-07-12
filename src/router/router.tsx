@@ -9,6 +9,9 @@ import DashboardLayout from "../layout/DashboardLayout";
 import AddProducts from "../pages/manageProducts/AddProducts";
 import ManageProducts from "../pages/manageProducts/ManageProducts";
 import ProductUpdate from "../pages/manageProducts/ProductUpdate";
+import AboutUs from "../pages/about/AboutUs";
+import ContactUs from "../pages/contact/ContactUs";
+import PageNotFound from "../pages/notFound/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -35,12 +38,24 @@ const router = createBrowserRouter([
         path: "/product-details/:id",
         element: <ProductDetails />,
       },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
+      },
     ],
   },
   {
     path: "dashboard",
     element: <DashboardLayout />,
     children: [
+      {
+        path: "",
+        element: <ManageProducts />,
+      },
       {
         path: "add-products",
         element: <AddProducts />,
@@ -54,6 +69,10 @@ const router = createBrowserRouter([
         element: <ProductUpdate />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <PageNotFound />,
   },
 ]);
 

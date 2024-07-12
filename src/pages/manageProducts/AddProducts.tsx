@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import { useAddProductMutation } from "../../redux/api/baseApi";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddProducts = () => {
   const { register, handleSubmit, reset } = useForm();
   const [addProduct] = useAddProductMutation();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const imageHostingToken = import.meta.env.VITE_APP_image_token;
   const imageHostingURL = `https://api.imgbb.com/1/upload?key=${imageHostingToken}`;
@@ -50,6 +52,7 @@ const AddProducts = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate("/");
     } catch (error) {
       console.error("Error uploading image or adding product", error);
     } finally {
@@ -58,7 +61,7 @@ const AddProducts = () => {
   };
 
   return (
-    <div className="w-full p-8 shadow-md ">
+    <div className="w-full p-8 shadow-lg">
       <div className=" flex justify-center items-center mb-4">
         <h1 className=" text-3xl  text-[#04211c] uppercase">Add product </h1>
       </div>
