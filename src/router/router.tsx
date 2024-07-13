@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import AllProducts from "../pages/products/AllProducts";
 import ProductDetails from "../pages/productDetails/ProductDetails";
 import CartDetails from "../pages/cart/CartDetails";
+import OrderSuccess from "../pages/cart/OrderSuccess";
 import CheckOutPage from "../pages/cart/CheckOutPage";
 import DashboardLayout from "../layout/DashboardLayout";
 import AddProducts from "../pages/manageProducts/AddProducts";
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
         element: <ProductUpdate />,
       },
     ],
+  },
+  {
+    path: "/success",
+    element: <OrderSuccess />,
   },
   {
     path: "*",

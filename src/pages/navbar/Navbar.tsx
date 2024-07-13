@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import { useAppSelector } from "../../redux/hooks";
+import { MdShoppingCartCheckout } from "react-icons/md";
 
 const Navbar = () => {
   // cart products
@@ -68,12 +69,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <Link to="/cart-details">
-            <button className="btn btn-sm">
-              Cart
+            <div className="text-2xl flex text-white mr-2">
+              <MdShoppingCartCheckout />
               <div className="badge badge-secondary">
                 +{cartProduct?.length}
               </div>
-            </button>
+            </div>
           </Link>
         </div>
       </div>

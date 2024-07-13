@@ -1,3 +1,54 @@
+<!--
+
+--------Instruction--------------
+font-end technology :
+1. React Vite, typescript, Redux toolkit, and Redux RTK ,
+2. design purpose :  tailwind css and daisy ui. and equvilant technology.
+
+* My website name : ABS Sports
+#Functionality :
+------------Home---------
+* Have a home slider where show latest 3 product image.
+* Have home demo product where show latest 3 product and 3 product under have a all product button
+
+-----------Nav and footer ----------
+* Have a nav bar and footer
+
+-------- not found and success route -------------
+* have success route and 404 route. where success route for confirmed order with cash on delivery
+
+--------all products pages --------------
+
+* all product route has 5 Functionality , search option , filter by price, filter by rating details button every product have pagination initially per page show 6 products
+
+------single product details -------
+* details product page has some Functionality like here show all things and add to cart button it's work only Redux store locally
+
+-------management part--------
+*have product management page where have side bar and where user can add product, update product, delete product,
+
+------------cart ---------
+*cart pages has some Functionality where user can increase and decrease product quantity and delete product from cart
+
+----place order ------
+*place order take user info with total payable amount and it's implement for cash on delivery
+*after place order create a user .
+
+------------------Thats all about my development---------
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -17,12 +68,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`

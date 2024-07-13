@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { TProducts } from "../../types/types";
 import { addToCart } from "../../redux/features/cartSlice";
 
+import Rating from "react-rating";
+
 const ProductDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetSingleProductQuery(id);
@@ -52,10 +54,15 @@ const ProductDetails = () => {
           <span className="text-black text-xl font-semibold">available :</span>{" "}
           <span className="text-[#82908e] ">{product?.quantity}</span>
         </p>
-        <p>
+        <div>
           <span className="text-black text-xl font-semibold">rating :</span>
-          <span className="text-[#82908e] ">{product?.rating}</span>
-        </p>
+          {/* @ts-expect-error their is no type declaration file for react rating*/}
+          <Rating
+            initialRating={product?.rating | 0}
+            emptySymbol={<span className="text-gray-300 text-2xl">☆</span>}
+            fullSymbol={<span className="text-yellow-500 text-2xl">★</span>}
+          />
+        </div>
         <p className="text-3xl font-bold text-[#1d3733] my-4">
           $ {product?.price}
         </p>
