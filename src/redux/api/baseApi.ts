@@ -24,6 +24,13 @@ export const baseApi = createApi({
       }),
       providesTags: ["product"],
     }),
+    manageAllProducts: builder.query({
+      query: () => ({
+        url: "/manage-products",
+        method: "GET",
+      }),
+      providesTags: ["product"],
+    }),
     getSingleProduct: builder.query({
       query: (id) => ({
         url: `/product/${id}`,
@@ -62,4 +69,5 @@ export const {
   useAddProductMutation,
   useDeleteProductMutation,
   useUpdateProductMutation,
+  useManageAllProductsQuery,
 } = baseApi;

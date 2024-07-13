@@ -1,20 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdDelete } from "react-icons/md";
 import Loading from "../../components/Loading/Loading";
 import {
   useDeleteProductMutation,
-  useGetHomeProductsQuery,
+  useManageAllProductsQuery,
 } from "../../redux/api/baseApi";
 import { TProducts } from "../../types/types";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const ManageProducts = () => {
-  const { data, isLoading } = useGetHomeProductsQuery(undefined);
   const [deleteProduct] = useDeleteProductMutation();
+  const { data, isLoading } = useManageAllProductsQuery(undefined);
 
   if (isLoading) {
     return <Loading />;
   }
+
 
   const handleDelete = (id: string) => {
     Swal.fire({
