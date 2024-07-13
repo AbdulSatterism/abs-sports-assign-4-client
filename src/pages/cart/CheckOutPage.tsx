@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { addUser } from "../../redux/features/userSlice";
+// import { useUpdateProductMutation } from "../../redux/api/baseApi";
 
 const CheckOutPage = () => {
   const cartProducts = useAppSelector((state) => state?.cart?.products);
@@ -14,6 +15,7 @@ const CheckOutPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const [paymentMethod, setPaymentMethod] = useState("cash");
+  // const [updateProduct] = useUpdateProductMutation();
 
   const totalPrice = cartProducts.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -34,6 +36,10 @@ const CheckOutPage = () => {
       cartProducts.forEach((item) => {
         dispatch(removeCartProducts(item._id));
         dispatch(addUser(userInfo));
+
+        // const { _id, quantity } = item;
+        // updateProduct({ _id, quantity });
+
         // todo:dispatch yet!
       });
       Swal.fire({

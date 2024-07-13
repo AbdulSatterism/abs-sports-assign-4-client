@@ -6,7 +6,9 @@ import { TProducts } from "../../types/types";
 import { useGetHomeProductsQuery } from "../../redux/api/baseApi";
 
 const Carousel = () => {
-  const { data, isLoading } = useGetHomeProductsQuery(undefined);
+  const { data, isLoading } = useGetHomeProductsQuery(undefined, {
+    pollingInterval: 30000,
+  });
 
   if (isLoading) {
     return <Loading />;

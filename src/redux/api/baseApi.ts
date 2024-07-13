@@ -7,10 +7,12 @@ export const baseApi = createApi({
   tagTypes: ["product"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: ({ search, price, rating }) => ({
-        url: `/products?search=${search}&sortBy=price&sortOrder=${price}&sortBy=rating&sortOrder=${rating}`,
-        method: "GET",
-      }),
+      query: ({ search, price, rating, page, limit }) => {
+        return {
+          url: `/products?search=${search}&sortBy=price&sortOrder=${price}&sortBy=rating&sortOrder=${rating}&page=${page}&limit=${limit}`,
+          method: "GET",
+        };
+      },
       providesTags: ["product"],
     }),
     getHomeProducts: builder.query({

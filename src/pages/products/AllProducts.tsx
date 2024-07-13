@@ -10,7 +10,12 @@ const AllProducts = () => {
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
 
-  const { data, isLoading } = useGetAllProductsQuery({ search, price, rating });
+  const [page, setPage] = useState(1);
+  const limit = 6;
+
+  const { data, isLoading } = useGetAllProductsQuery(
+    { search, price, rating, page, limit } || undefined
+  );
 
   if (isLoading) {
     return <Loading />;
@@ -19,11 +24,12 @@ const AllProducts = () => {
   const handleSearch = (e: any) => {
     setSearch(e.target.value);
   };
-  const handlePrice = (e: any) => {
-    setPrice(e.target.value);
-  };
-  const handleRating = (e: any) => {
-    setRating(e.target.value);
+
+  const handlePageChange = (e: any) => {
+    const newPage = parseInt(e.target.value, 6);
+    if (!isNaN(newPage) && newPage > 0) {
+      setPage(newPage);
+    }
   };
 
   return (
@@ -46,7 +52,7 @@ const AllProducts = () => {
 
         <div>
           <select
-            onClick={handlePrice}
+            onChange={(e) => setPrice(e.target.value)}
             className="select select-info w-full max-w-xs"
           >
             <option disabled>Filter by Price</option>
@@ -56,7 +62,7 @@ const AllProducts = () => {
         </div>
         <div>
           <select
-            onClick={handleRating}
+            onChange={(e) => setRating(e.target.value)}
             className="select select-info w-full max-w-xs"
           >
             <option disabled>Filter by Rating</option>
@@ -70,6 +76,30 @@ const AllProducts = () => {
         {data?.data?.map((item: TProducts) => (
           <Product key={item?._id} {...item}></Product>
         ))}
+      </div>
+
+      <div className="flex items-center justify-center mt-8">
+        <button
+          className="btn btn-outline"
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+        >
+          Previous
+        </button>
+        <input
+          type="number"
+          value={page}
+          onChange={handlePageChange}
+          min="1"
+          className="w-12 text-center px-2 py-1 border rounded-md mx-2"
+        />
+        <button
+          className="btn btn-outline"
+          disabled={data.length <= limit}
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

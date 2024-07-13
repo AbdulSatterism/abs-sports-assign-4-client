@@ -11,6 +11,7 @@ import { useGetHomeProductsQuery } from "../../redux/api/baseApi";
 import Loading from "../../components/Loading/Loading";
 import { Link } from "react-router-dom";
 import { IoBagCheckOutline } from "react-icons/io5";
+import Swal from "sweetalert2";
 
 const CartDetails = () => {
   const cartProducts = useAppSelector((state) => state?.cart?.products);
@@ -28,19 +29,43 @@ const CartDetails = () => {
     return <Loading />;
   }
 
-  const handleIncrease = () => {
+  const handleIncrease = (id: string) => {
     data.data.map((item: TProducts) => {
-      dispatch(increment(item));
+      if (item._id === id) {
+        dispatch(increment(item));
+      }
     });
   };
-  const handleDecrease = () => {
+  const handleDecrease = (id: string) => {
     data.data.map((item: TProducts) => {
-      dispatch(decrement(item));
+      if (item._id === id) {
+        dispatch(decrement(item));
+      }
     });
   };
-  const handleRemove = () => {
-    data.data.map((item: TProducts) => {
-      dispatch(removeProduct(item));
+  const handleRemove = (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `You want to delete this one ${id} `,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        data.data.map((item: TProducts) => {
+          if (item._id === id) {
+            dispatch(removeProduct(item));
+          }
+        });
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your product has been deleted.",
+          icon: "success",
+        });
+      }
     });
   };
 
@@ -88,7 +113,7 @@ const CartDetails = () => {
                   </td>
                   <td className="text-center">
                     <button
-                      onClick={handleIncrease}
+                      onClick={() => handleIncrease(product?._id)}
                       className="btn text-center text-[#04211c]"
                     >
                       <FaPlus />
@@ -102,7 +127,7 @@ const CartDetails = () => {
                   </td>
                   <td className="text-center">
                     <button
-                      onClick={handleDecrease}
+                      onClick={() => handleDecrease(product?._id)}
                       className="btn  text-[#04211c]"
                     >
                       <FaMinus />
@@ -110,7 +135,7 @@ const CartDetails = () => {
                   </td>
                   <td className="text-center">
                     <button
-                      onClick={handleRemove}
+                      onClick={() => handleRemove(product?._id)}
                       className="text-3xl text-red-500 hover:text-red-900"
                     >
                       <MdDelete />

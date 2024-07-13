@@ -60,7 +60,7 @@ const Navbar = () => {
           </div>
           <div className="avatar w-20 text-white items-center">
             <img className="" src={logo} alt="" />
-            <h1>ABS Sports</h1>
+            <h1 className="text-2xl font-bold">ABS Sports</h1>
           </div>
         </div>
         <div className="hidden navbar-center  lg:flex">

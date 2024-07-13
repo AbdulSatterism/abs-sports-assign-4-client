@@ -6,7 +6,9 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { useGetHomeProductsQuery } from "../../redux/api/baseApi";
 
 const Products = () => {
-  const { data, isLoading } = useGetHomeProductsQuery(undefined);
+  const { data, isLoading } = useGetHomeProductsQuery(undefined, {
+    pollingInterval: 30000,
+  });
 
   if (isLoading) {
     return <Loading />;
