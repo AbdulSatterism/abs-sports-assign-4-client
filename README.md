@@ -9,7 +9,8 @@ font-end technology :
 #Functionality :
 ------------Home---------
 * Have a home slider where show latest 3 product image.
-* Have home demo product where show latest 3 product and 3 product under have a all product button
+* Have home Features product where show latest 4 product and 3 product under have a all product button
+* have category featutes it's define all category.
 
 -----------Nav and footer ----------
 * Have a nav bar and footer
@@ -19,7 +20,7 @@ font-end technology :
 
 --------all products pages --------------
 
-* all product route has 5 Functionality , search option , filter by price, filter by rating details button every product have pagination initially per page show 6 products
+* all product route has 5 Functionality , search by name , filter by price , category,brand, and maximum price minimum price, filter by rating details button every product have pagination initially per page show 6 products
 
 ------single product details -------
 * details product page has some Functionality like here show all things and add to cart button it's work only Redux store locally
@@ -35,6 +36,7 @@ font-end technology :
 *after place order create a user .
 
 ------------------Thats all about my development---------
+
 
 
 
