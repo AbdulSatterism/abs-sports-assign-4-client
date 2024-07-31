@@ -1,73 +1,79 @@
 const ContactUs = () => {
   return (
-    <div className="container mx-auto p-4">
-      <div className="text-center my-8">
-        <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
-        <form className="max-w-lg mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="name"
-            >
-              Name
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="name"
-              type="text"
-              placeholder="Your name"
-            />
+    <div className="bg-white py-12">
+      <h2 className="text-3xl mb-8 font-bold text-center text-[#04211c]">
+        Contact
+      </h2>
+
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="gap-4">
+            <h3 className="text-2xl font-semibold text-[#04211c] uppercase">
+              Get in Touch
+            </h3>
+            <form className="mt-4 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-[#04211c]">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#04211c]">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#04211c]">
+                  Message
+                </label>
+                <textarea className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full inline-flex justify-center py-2 px-4 border shadow-sm text-xl rounded-md text-white bg-[#04211c]"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="email"
-              placeholder="Your email"
-            />
+          <div className="flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-semibold text-[#04211c] uppercase">
+                Contact Information
+              </h3>
+              <p className="mt-4 text-[#04211c]">
+                Feel free to reach out to us through any of the following
+                methods.
+              </p>
+            </div>
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold text-[#04211c]">
+                Company Location
+              </h4>
+              <p className="text-gray-600">
+                Mirpur-10,Dhaka
+                <br />
+                Bangladesh
+              </p>
+            </div>
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold text-[#04211c]">Email</h4>
+              <p className="text-gray-600">abdulsatter.ism@gmail.com</p>
+            </div>
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold text-[#04211c]">Mobile</h4>
+              <p className="text-gray-600">(+880)- 1710426245</p>
+            </div>
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="subject"
-            >
-              Subject
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="subject"
-              type="text"
-              placeholder="Subject"
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="message"
-            >
-              Message
-            </label>
-            <textarea
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="message"
-              placeholder="Your message"
-            ></textarea>
-          </div>
-          <div className="flex  items-center justify-between">
-            <button
-              className="w-full bg-[#04211c] hover:bg-[#32665e] text-white p-2 rounded  focus:outline-none focus:shadow-outline"
-              type="button"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );

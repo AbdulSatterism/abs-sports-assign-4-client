@@ -24,8 +24,16 @@ const ProductUpdate = () => {
 
   const onSubmit = async (data: any) => {
     setLoading(true);
-    const { name, brand, category, quantity, price, rating, description } =
-      data;
+    const {
+      name,
+      brand,
+      category,
+      discount,
+      quantity,
+      price,
+      rating,
+      description,
+    } = data;
     const item = {
       name,
       brand,
@@ -33,6 +41,7 @@ const ProductUpdate = () => {
       price: parseFloat(price),
       rating: parseFloat(rating),
       quantity: parseInt(quantity),
+      discount: parseInt(discount),
       description,
     };
     const { _id } = product;
@@ -77,6 +86,18 @@ const ProductUpdate = () => {
             type="text"
             placeholder="Product Category"
             {...register("category", { required: true, maxLength: 120 })}
+            className="w-full input input-bordered "
+          />
+        </div>
+        <div className="w-full mb-4 form-control ">
+          <label className="label">
+            <span className="font-semibold label-text">Product Discount* </span>
+          </label>
+          <input
+            defaultValue={product?.discount}
+            type="text"
+            placeholder="Product discount"
+            {...register("discount", { required: true, maxLength: 120 })}
             className="w-full input input-bordered "
           />
         </div>

@@ -24,31 +24,46 @@ const AboutUs = () => {
 
   return (
     <>
-      <div className="m-4">
-        <h2 className="text-3xl font-bold my-8 text-[#04211c] text-center ">
-          About us
-        </h2>
-        <div className="card lg:card-side bg-white shadow-xl my-12 ">
-          <img
-            className="max-w-xl rounded"
-            src="https://i.ibb.co/Wsg3rGT/teacher1.jpg"
-            alt=""
-          />
-          <div className="card-body text-[#82908e]">
-            <div className="mb-2">
-              <h2 className="card-title text-black ">Mission & Vission</h2>
-              <p>
-                {" "}
-                Our mission is to inspire athletes and enthusiasts through
-                innovative and high-quality sports products. Our vision is to be
-                the most trusted and dynamic sports goods provider globally.To
-                offer seamless service and build value for clients through focus
-                and results. To be the first choice for optimizing and achieving
-                operational excellence through IT enabled services. To be a
-                process driven, professionally managed and highly profitable
-                organization
-              </p>
-            </div>
+      <h2 className="text-3xl font-bold my-8 text-[#04211c] text-center ">
+        About us
+      </h2>
+      <div className="grid grid-cols-1 my-8 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="card bg-base-100 w-full shadow-lg mx-auto">
+          <div className="card-body">
+            <h2 className="card-title text-[#04211c]">About Company</h2>
+            <p className="items-center">
+              Diam neque diam sed tincidunt lobortis facilisis massa eget
+              scelerisque tincidunt amet in blandit maecenas egestas eu quam
+              aenean odio urna facilisis integer tincidunt ut eu eu ultrices
+              integer quisque vivamus felis leo massa maecenas in et tempus nisl
+              morbi euismod iaculis pellentesque urna vulputate suspendisse eget
+              sit
+            </p>
+          </div>
+        </div>
+        <div className="card bg-base-100 w-full shadow-lg mx-auto">
+          <div className="card-body">
+            <h2 className="card-title text-[#04211c]">Our Mission</h2>
+            <p className="items-center">
+              Our mission is to inspire athletes and enthusiasts through
+              innovative and high-quality sports products. Our vision is to be
+              the most trusted and dynamic sports goods provider globally.To
+              offer seamless service and build value for clients through focus
+              and results. To be the first choice for optimizing and achieving
+            </p>
+          </div>
+        </div>
+        <div className="card bg-base-100 w-full shadow-lg mx-auto">
+          <div className="card-body">
+            <h2 className="card-title text-[#04211c]">Our Vision</h2>
+            <p className="items-center">
+              Our mission is to inspire athletes and enthusiasts through
+              innovative and high-quality sports products. Our vision is to be
+              the most trusted and dynamic sports goods provider globally.To
+              offer seamless service and build value for clients through focus
+              and results. To be the first choice for optimizing and achieving
+              operational excellence through IT enabled services. To be a
+            </p>
           </div>
         </div>
       </div>
@@ -87,17 +102,6 @@ const AboutUs = () => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086434282726!2d-122.41941548468172!3d37.77492927975998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808ef2b22c21%3A0x7d4c4b18c8c8b8f!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1624003985241!5m2!1sen!2sin"
             loading="lazy"
           ></iframe>
-        </section>
-        <section data-aos="zoom-in-up" className="mt-8 mb-4">
-          <h2 className="text-3xl font-bold my-8 text-[#04211c] text-center">
-            Contact Information
-          </h2>
-
-          <div className=" lg:flex  justify-around items-center mx-auto font-bold">
-            <p className="text-lg ">Email: abdulsatter.ism@gmail.com</p>
-            <p className="text-lg ">Phone: +01710426245</p>
-            <p className="text-lg">Address: 123 Road Lane, city, Bangladesh</p>
-          </div>
         </section>
       </div>
     </>

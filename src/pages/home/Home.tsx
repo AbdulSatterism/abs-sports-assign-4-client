@@ -1,11 +1,15 @@
-import Products from "../products/Products";
+import ContactUs from "../contact/ContactUs";
 import Carousel from "./Carousel";
+import Catagories from "./Catagories";
+import FeatureProducts from "./FeatureProducts";
 
 const Home = () => {
   return (
     <div>
       <Carousel />
-      <Products></Products>
+      <FeatureProducts />
+      <Catagories />
+      <ContactUs />
     </div>
   );
 };

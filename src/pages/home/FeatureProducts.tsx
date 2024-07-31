@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
-import { TProducts } from "../../types/types";
-import Product from "./Product";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { useGetHomeProductsQuery } from "../../redux/api/baseApi";
+import Loading from "../../components/Loading/Loading";
+import { Link } from "react-router-dom";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { TProducts } from "../../types/types";
+import FeatureProduct from "./FeatureProduct";
 
-const Products = () => {
+const FeatureProducts = () => {
   const { data, isLoading } = useGetHomeProductsQuery(undefined, {
     pollingInterval: 30000,
   });
@@ -15,16 +15,16 @@ const Products = () => {
   }
 
   return (
-    <div>
+    <div className="p-4 my-12">
       <div className="divider my-12 ">
-        <h1 className="text-3xl text-[#82908e] " data-aos="zoom-in">
-          Demo Products
+        <h1 className="text-3xl text-[#04211c] font-bold " data-aos="zoom-in">
+          Features Products
         </h1>
       </div>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-        {data?.data?.slice(0, 3).map((item: TProducts) => (
-          <Product key={item?._id} {...item}></Product>
+      <div className="grid grid-cols-1  lg:grid-cols-2 gap-4">
+        {data?.data?.slice(0, 4).map((item: TProducts) => (
+          <FeatureProduct key={item?._id} {...item}></FeatureProduct>
         ))}
       </div>
       {data?.data?.length > 3 && (
@@ -41,4 +41,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default FeatureProducts;

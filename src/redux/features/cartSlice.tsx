@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type TProduct = {
+  discount?: number;
   _id: string;
   name: string;
   category: string;

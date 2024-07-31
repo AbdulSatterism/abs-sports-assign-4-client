@@ -40,37 +40,44 @@ const ProductDetails = () => {
           {" "}
           {product?.name}
         </h1>
-        <p>
-          <span className="text-black text-xl font-semibold">brand :</span>{" "}
-          <span className="text-[#82908e] ">{product?.brand}</span>
+
+        <p className="text-[#1d3733] text-xl font-bold">
+          brand : {product?.brand}
         </p>
-        <p>
-          <span className="text-black text-xl font-semibold ">category :</span>{" "}
-          <span className="text-[#82908e] text-xl font-semibold ">
-            {product?.category}
-          </span>
+        <p className="text-[#1d3733] text-xl font-bold">
+          category : {product?.category}
         </p>
-        <p>
-          <span className="text-black text-xl font-semibold">available :</span>{" "}
-          <span className="text-[#82908e] ">{product?.quantity}</span>
+        <p className="text-[#1d3733] text-xl font-bold">
+          available : {product?.quantity}
         </p>
+
+        {
+          <p className="text-[#1d3733] text-xl font-bold">
+            discount : ${product?.discount ? product?.discount : "0"}%
+          </p>
+        }
+
         <div>
-          <span className="text-black text-xl font-semibold">rating :</span>
+          <span className="text-[#1d3733] text-xl font-bold">rating : </span>
           {/* @ts-expect-error their is no type declaration file for react rating*/}
           <Rating
             initialRating={product?.rating | 0}
-            emptySymbol={<span className="text-gray-300 text-2xl">☆</span>}
-            fullSymbol={<span className="text-yellow-500 text-2xl">★</span>}
+            emptySymbol={
+              <span className="text-gray-300 text-2xl  font-semibold">☆</span>
+            }
+            fullSymbol={
+              <span className="text-yellow-500 text-2xl font-semibold">★</span>
+            }
           />
         </div>
         <p className="text-3xl font-bold text-[#1d3733] my-4">
           $ {product?.price}
         </p>
         <p>
-          <span className="text-black text-xl font-semibold">
+          <span className="text-[#04211c] text-xl font-bold">
             description :
           </span>
-          <span className="text-[#82908e] justify-center items-center">
+          <span className="text-[#1d3733] justify-center items-center">
             {product?.description}
           </span>
         </p>

@@ -9,10 +9,11 @@ export const baseApi = createApi({
   tagTypes: ["product"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: ({ search, price, rating, page, limit }) => {
+      query: (params) => {
         return {
-          url: `/products?search=${search}&sortBy=price&sortOrder=${price}&sortBy=rating&sortOrder=${rating}&page=${page}&limit=${limit}`,
+          url: "/products",
           method: "GET",
+          params,
         };
       },
       providesTags: ["product"],
@@ -43,6 +44,7 @@ export const baseApi = createApi({
         method: "POST",
         body: product,
       }),
+      invalidatesTags: ["product"],
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({

@@ -1,78 +1,132 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../../components/Loading/Loading";
 import { TProducts } from "../../types/types";
 import Product from "./Product";
 import { useGetAllProductsQuery } from "../../redux/api/baseApi";
+import { useLocation } from "react-router-dom";
 
 const AllProducts = () => {
-  const [search, setSearch] = useState("");
-  const [price, setPrice] = useState("");
-  const [rating, setRating] = useState("");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState(queryParams.get("category") || "");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [brand, setBrand] = useState("");
+  const [sort, setSort] = useState("");
+  const [order, setOrder] = useState("asc");
   const [page, setPage] = useState(1);
   const limit = 6;
 
   const { data, isLoading } = useGetAllProductsQuery(
-    { search, price, rating, page, limit } || undefined
+    {
+      page,
+      limit,
+      search,
+      category,
+      minPrice,
+      maxPrice,
+      brand,
+      sort,
+      order,
+    } || undefined
   );
+
+  useEffect(() => {
+    setCategory(queryParams.get("category") || "");
+  }, [location.search]);
+
+  const handleReset = () => {
+    setSearch("");
+    setCategory("");
+    setMinPrice("");
+    setMaxPrice("");
+    setBrand("");
+    setSort("");
+    setOrder("asc");
+    setPage(1);
+  };
 
   if (isLoading) {
     return <Loading />;
   }
 
-  const handleSearch = (e: any) => {
-    setSearch(e.target.value);
-  };
-
-  const handlePageChange = (e: any) => {
-    const newPage = parseInt(e.target.value, 6);
-    if (!isNaN(newPage) && newPage > 0) {
-      setPage(newPage);
-    }
-  };
-
   return (
     <div>
-      <div className="flex justify-between  mx-4 py-6">
-        <div>
-          <input
-            onChange={handleSearch}
-            type="text"
-            className="input input-bordered"
-            placeholder="search product"
-          />
-          <button
-            onClick={handleSearch}
-            className="btn bg-[#04211c] text-sm  text-white "
-          >
-            Search
-          </button>
-        </div>
+      <div className="my-12 p-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-[#04211c"
+          placeholder="Search by name"
+        />
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-[#04211c"
+        >
+          <option value="">All Categories</option>
+          <option value="Cricket">Cricket</option>
+          <option value="Football">Football</option>
+          <option value="Tenis">Tenis</option>
+          <option value="Hockey">Hockey</option>
+        </select>
+        <input
+          type="number"
+          value={minPrice}
+          onChange={(e) => setMinPrice(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-[#04211c"
+          placeholder="Min Price"
+        />
+        <input
+          type="number"
+          value={maxPrice}
+          onChange={(e) => setMaxPrice(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-[#04211c"
+          placeholder="Max Price"
+        />
+        <select
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-[#04211c"
+        >
+          <option value="">All Brands</option>
+          <option value="SS">SS</option>
+          <option value="Adidas">Adidas</option>
+          <option value="PP">PP</option>
+          <option value="VS">VS</option>
+        </select>
+        <select
+          value={sort}
+          onChange={(e: any) => setSort(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-[#04211c"
+        >
+          <option value="">Sort By</option>
+          <option value="price">Price</option>
+          <option value="rating">Rating</option>
+        </select>
+        <select
+          value={order}
+          onChange={(e) => setOrder(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-[#04211c"
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
 
-        <div>
-          <select
-            onChange={(e) => setPrice(e.target.value)}
-            className="select select-info w-full max-w-xs"
-          >
-            <option disabled>Filter by Price</option>
-            <option value="asc">High Price</option>
-            <option value="desc">Low Price</option>
-          </select>
-        </div>
-        <div>
-          <select
-            onChange={(e) => setRating(e.target.value)}
-            className="select select-info w-full max-w-xs"
-          >
-            <option disabled>Filter by Rating</option>
-            <option value="asc">Top Rating</option>
-            <option value="desc">Less Rating</option>
-          </select>
-        </div>
+        <button
+          className="w-full bg-[#04211c] text-xl hover:bg-[#32665e] text-white p-2 rounded"
+          onClick={handleReset}
+        >
+          Clear Filters
+        </button>
       </div>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
         {data?.data?.map((item: TProducts) => (
           <Product key={item?._id} {...item}></Product>
         ))}
@@ -89,15 +143,10 @@ const AllProducts = () => {
         <input
           type="number"
           value={page}
-          onChange={handlePageChange}
           min="1"
-          className="w-12 text-center px-2 py-1 border rounded-md mx-2"
+          className="w-12 px-2 py-1 mx-2 text-center border rounded-md"
         />
-        <button
-          className="btn btn-outline"
-          disabled={data.length <= limit}
-          onClick={() => setPage(page + 1)}
-        >
+        <button className="btn btn-outline" onClick={() => setPage(page + 1)}>
           Next
         </button>
       </div>

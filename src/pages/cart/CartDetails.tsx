@@ -22,8 +22,16 @@ const CartDetails = () => {
     (total, item) => total + item.price * item.quantity,
     0
   );
+  const totalDiscount = cartProducts.reduce(
+    (total, item) =>
+      total +
+      ((item?.discount ? item?.discount : 0) * item?.price * item?.quantity) /
+        100,
+    0
+  );
+
   const vat = totalPrice * 0.15;
-  const totalWithVat = totalPrice + vat;
+  const totalWithVat = totalPrice + vat - totalDiscount;
 
   if (isLoading) {
     return <Loading />;
@@ -148,6 +156,9 @@ const CartDetails = () => {
           <div className="items-center gap-4 my-4">
             <p className="text-xl font-bold">Total: ${totalPrice}</p>
             <p className="text-xl font-bold">Vat: ${vat.toFixed(2)}</p>
+            <p className="text-xl font-bold">
+              Discount: ${totalDiscount.toFixed(2)}
+            </p>
 
             <p className="text-xl font-bold">
               Subtotal Including Vat: ${totalWithVat}

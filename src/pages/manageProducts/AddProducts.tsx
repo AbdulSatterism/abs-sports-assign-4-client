@@ -30,8 +30,16 @@ const AddProducts = () => {
       const imgURL = imgData.data.display_url;
 
       // Post product with image URL
-      const { name, brand, category, quantity, price, rating, description } =
-        data;
+      const {
+        name,
+        brand,
+        discount,
+        category,
+        quantity,
+        price,
+        rating,
+        description,
+      } = data;
       const product = {
         name,
         brand,
@@ -40,12 +48,12 @@ const AddProducts = () => {
         price: parseFloat(price),
         rating: parseFloat(rating),
         quantity: parseInt(quantity),
+        discount: parseInt(discount),
         description,
         inStock: true,
       };
       await addProduct(product);
       reset();
-      // alert("New product added successfully");
       Swal.fire({
         icon: "success",
         title: "New product added successfully",
@@ -78,31 +86,52 @@ const AddProducts = () => {
             className="w-full input input-bordered "
           />
         </div>
-        <div className="w-full mb-4 form-control ">
-          <label className="label">
-            <span className="font-semibold label-text">Product Category* </span>
-          </label>
-          <input
-            type="text"
-            placeholder="Product Category"
-            {...register("category", { required: true, maxLength: 120 })}
-            className="w-full input input-bordered "
-          />
-        </div>
-        <div className="w-full mb-4 form-control ">
-          <label className="label">
-            <span className="font-semibold label-text">Product Brand* </span>
-          </label>
-          <input
-            type="text"
-            placeholder="Product Brand"
-            {...register("brand", { required: true, maxLength: 120 })}
-            className="w-full input input-bordered "
-          />
+        <div className="flex my-4 gap-2">
+          <div className="w-full mb-4 form-control ">
+            <label className="label">
+              <span className="font-semibold label-text">Select Brand* </span>
+            </label>
+            <select
+              {...register("brand", { required: true, maxLength: 120 })}
+              className="w-full input input-bordered"
+            >
+              <option value="SS">SS</option>
+              <option value="Adidas">Adidas</option>
+              <option value="PP">PP</option>
+              <option value="VS">VS</option>
+            </select>
+          </div>
+          <div className="w-full mb-4 form-control ">
+            <label className="label">
+              <span className="font-semibold label-text">
+                Select Category*{" "}
+              </span>
+            </label>
+            <select
+              {...register("category", { required: true, maxLength: 120 })}
+              className="w-full input input-bordered"
+            >
+              <option value="Cricket">Cricket</option>
+              <option value="Football">Football</option>
+              <option value="Tenis">Tenis</option>
+              <option value="Hockey">Hockey</option>
+            </select>
+          </div>
         </div>
 
-        <div className="flex my-4">
-          <div className="w-full ml-4 form-control ">
+        <div className="flex my-4 gap-2">
+          <div className="w-full mb-4 form-control ">
+            <label className="label">
+              <span className="font-semibold label-text">Discount* </span>
+            </label>
+            <input
+              type="number"
+              placeholder="Type here"
+              {...register("discount")}
+              className="w-full input input-bordered "
+            />
+          </div>
+          <div className="w-full mb-4 form-control ">
             <label className="label">
               <span className="font-semibold label-text">quantity* </span>
             </label>
@@ -113,7 +142,10 @@ const AddProducts = () => {
               className="w-full input input-bordered "
             />
           </div>
-          <div className="w-full ml-4 form-control ">
+        </div>
+
+        <div className="flex my-4 gap-2">
+          <div className="w-full mb-4 form-control ">
             <label className="label">
               <span className="font-semibold label-text">Price* </span>
             </label>
@@ -124,7 +156,7 @@ const AddProducts = () => {
               className="w-full input input-bordered "
             />
           </div>
-          <div className="w-full ml-4 form-control ">
+          <div className="w-full mb-4 form-control ">
             <label className="label">
               <span className="font-semibold label-text">Rating* </span>
             </label>
@@ -158,6 +190,7 @@ const AddProducts = () => {
             className="w-full file-input file-input-bordered "
           />
         </div>
+
         <input
           disabled={loading}
           className="w-full bg-[#04211c] hover:bg-[#32665e] text-white p-2 rounded "

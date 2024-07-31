@@ -71,7 +71,7 @@ const Navbar = () => {
           <Link to="/cart-details">
             <div className="text-2xl flex text-white mr-2">
               <MdShoppingCartCheckout />
-              <div className="badge badge-secondary">
+              <div className="badge shadow-xl  font-bold text-[#070811]">
                 +{cartProduct?.length}
               </div>
             </div>
